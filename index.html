@@ -961,13 +961,14 @@
 
                     let allianceColor = '#000000'; // Default, no alliance
 
+                    //Coloring Countries Based on Alliance
                     if (country.Alliance === "NATO") {
                         allianceColor = '#506AB2';
                     } else if (country.Alliance === "CSTO") {
                         allianceColor = '#E67368';
                     }
 
-
+                    //Dynamically getting infor from JSON
                     mapValues[country['Country Code']] = {
                         gdp: country.GDP,
                         population: country.Population,
@@ -978,7 +979,7 @@
                     };
                 });
 
-                // Initialize the svgMap with the processed data
+                // Initializing the SVG map with the data from the JSON
                 let map1 = new svgMap({
                     targetElementID: 'svgMap',
                     mouseWheelZoomEnabled: false,
@@ -1043,8 +1044,8 @@
                                 thousandSeparator: ',',
                                 thresholdMax: 50000,
                                 thresholdMin: 1000
-                            }, 
-                            area:{
+                            },
+                            area: {
                                 name: 'Area',
                                 format: '{0} km²',
                                 thousandSeparator: ','
@@ -1056,14 +1057,14 @@
                                 thresholdMax: 50000,
                                 thresholdMin: 1000
                             }
-                           
+
                         },
                         applyData: 'gdp',
                         applyData: 'population',
                         applyData: 'Mil_Percent_GDP',
                         values: {
-                            RU: { gdp: 1779000000000, color: '#D62C20', population: "146400000",area:"17100000", Mil_Percent_GDP: "4.1" },
-                            UA: { gdp: 200100000000, color: '#DAA520', population: "43790000",area:"603628", Mil_Percent_GDP: "3.23%(2021)   33.55%(2022)" },
+                            RU: { gdp: 1779000000000, color: '#D62C20', population: "146400000", area: "17100000", Mil_Percent_GDP: "4.1" },
+                            UA: { gdp: 200100000000, color: '#DAA520', population: "43790000", area: "603628", Mil_Percent_GDP: "3.23%(2021)   33.55%(2022)" },
                         }
                     }
                 });
@@ -1075,6 +1076,7 @@
 
 
     </script>
+
 
     <!-- Remaining HTML for Chart and Map Containers -->
     <section
@@ -1104,8 +1106,6 @@
         <div id="RuUKSize-container" style="width: 780px; height: 160px; margin: 0px auto;"></div>
 
     </section>
-
-
 
 
 
