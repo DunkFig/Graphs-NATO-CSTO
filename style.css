@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Assistant');
+
+
+.svgMap-map-image{
+    background-color: #E6DFDC;
+    padding: 0px;
+    margin: 0px;
+}
+
+.svgMap-control-button{
+    display: none;
+}
+
+
+.svgMap-tooltip-content-container{
+    font-family: Assistant, sans-serif;
+    background-color: rgba(164, 154, 154, 0.533);
+    color: white;
+}
+
+
+.svgMap-wrapper{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+body{
+    margin:  0px;
+}

@@ -4,16 +4,19 @@
 
 <head>
 
+    <!-- Import CanvasJS -->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/StephanWagner/svgMap@v2.10.1/dist/svgMap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/StephanWagner/svgMap@v2.10.1/dist/svgMap.min.css" rel="stylesheet">
 
 
-    <style>
-        body {
-            margin: 0;
-        }
+</head>
 
-        @import url('https://fonts.googleapis.com/css?family=Assistant');
-    </style>
+<body>
 
+    <!-- Charts are Added in Script tage Below -->
     <script>
         window.onload = function () {
 
@@ -34,9 +37,6 @@
 
             var chartpxwidth = 780;
 
-            var popScalemax = 1201
-            var popUnit = popScalemax / chartpxwidth
-
 
             // CanvasJS 
             var GDPscalemax = 63063;
@@ -56,6 +56,7 @@
                     backgroundColor: wpTan,
                     animationEnabled: true,
                     dataPointWidth: 25,
+
                     // Hover tool tip
                     toolTip: {
                         backgroundColor: "#000000",
@@ -695,7 +696,7 @@
                                 { x: 6, label: "Russian Military Budget (3.72% of GDP)", y: 68.29920, color: militaryRus },
                                 { x: 6, y: RUUKGDPUnit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
-                                { x: 6, label: "Remaining Russian GDP", y:  1767.780, color: russiaRed },
+                                { x: 6, label: "Remaining Russian GDP", y: 1767.780, color: russiaRed },
                                 { x: 6, y: RUUKGDPUnit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
 
@@ -707,13 +708,13 @@
                                     indexLabelFontSize: 16,
                                 },
 
-                                { x: 5, label: "Ukrainian Military Budget", y: 6.46, color: militaryUK},
+                                { x: 5, label: "Ukrainian Military Budget (3.23% of GDP)", y: 6.46, color: militaryUK },
                                 { x: 5, y: RUUKGDPUnit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
-                                { x: 5, label: "Remaining Ukrainian GDP", y: 193.46 , color: ukraineGold },
+                                { x: 5, label: "Remaining Ukrainian GDP", y: 193.46, color: ukraineGold },
                                 { x: 5, y: RUUKGDPUnit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
-                                
+
                                 {
                                     x: 5, y: RUUKGDPUnit * 8, color: wpTan,
                                     indexLabel: "~200.1 Billion Dollars (2021)",
@@ -725,7 +726,7 @@
                                 { x: 4, label: "Russian Military Budget (4.1% of GDP)", y: 91.84, color: militaryRus },
                                 { x: 4, y: RUUKGDPUnit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
-                                { x: 4, label: "Remaining Russian GDP", y:  2148.16, color: russiaRed },
+                                { x: 4, label: "Remaining Russian GDP", y: 2148.16, color: russiaRed },
                                 { x: 4, y: RUUKGDPUnit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
 
@@ -737,13 +738,13 @@
                                     indexLabelFontSize: 16,
                                 },
 
-                                { x: 3, label: "Ukrainian Military Budget (33.55%)", y: 53.3445, color: militaryUK},
+                                { x: 3, label: "Ukrainian Military Budget (33.55%)", y: 53.3445, color: militaryUK },
                                 { x: 3, y: RUUKGDPUnit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
-                                { x: 3, label: "Remaining Ukrainian GDP", y: 105.6555 , color: ukraineGold },
+                                { x: 3, label: "Remaining Ukrainian GDP", y: 105.6555, color: ukraineGold },
                                 { x: 3, y: RUUKGDPUnit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
-                                
+
                                 {
                                     x: 3, y: RUUKGDPUnit * 8, color: wpTan,
                                     indexLabel: "~159 Billion Dollars (2022)",
@@ -752,36 +753,7 @@
                                     indexLabelFontSize: 16,
                                 },
 
-                                // { x: 2, label: "Russian Military Budget (2% of GDP)", y: 82.960, color: militaryRus },
-                                // { x: 2, y: RUUKGDPUnit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
-                                // { x: 2, label: "Remaining Russian GDP", y:  4065.00000000, color: russiaRed },
-                                // { x: 2, y: RUUKGDPUnit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
-
-
-                                // {
-                                //     x: 2, y: RUUKGDPUnit * 8, color: wpTan,
-                                //     indexLabel: "~ 4.148 Trillion Dollars (2023)",
-                                //     toolTipContent: null,
-                                //     highlightEnabled: false,
-                                //     indexLabelFontSize: 16,
-                                // },
-
-                                // { x: 1, label: "Ukrainian Military Budget (33.55%)", y: 53.3445, color: militaryUK},
-                                // { x: 1, y: RUUKGDPUnit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
-
-                                // { x: 1, label: "Remaining Ukrainian GDP", y: 105.6555 , color: ukraineGold },
-                                // { x: 1, y: RUUKGDPUnit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
-
-                                
-                                // {
-                                //     x: 1, y: RUUKGDPUnit * 8, color: wpTan,
-                                //     indexLabel: "~ 368 Billion Dollars",
-                                //     toolTipContent: null,
-                                //     highlightEnabled: false,
-                                //     indexLabelFontSize: 16,
-                                // },
-                                
                             ]
                         }
                     ]
@@ -792,7 +764,6 @@
             var ruUKSizeMax = 20100000
             var ruUKSizeUnit = ruUKSizeMax / chartpxwidth
             var RuUKSize = new CanvasJS.Chart("RuUKSize-container",
-
                 {
                     title: {
                         text: " ",
@@ -931,7 +902,7 @@
                             indexLabelFontFamily: "Arial, sans-serif",
                             dataPoints: [
 
-                               
+
                                 { x: 3, label: "Russia", y: 146.4, color: russiaRed },
                                 { x: 3, y: ruUKPopUnit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
@@ -974,56 +945,169 @@
                     ]
                 });
             RuUKSPop.render();
-
-
         }
     </script>
-</head>
-
-<body>
- <section style="text-align: center; background-color: #E6DFDC; font-family: Assistant, sans-serif; font-weight: 400; color: #5B5B5B",>
-    <br>
-    <img src ="SVGs/NATO v CSTO.svg" style="width: 580px; margin: 0px auto;">
-    <br>
-    <br>
-    <br>
-    <br>
-    GDP
-    <div id="GDP-container" style="width: 780px; height: 160px; margin: 0px auto;"></div>
-    <br>
-    <br>
-    POP
-    <div id="pop-container" style="width: 780px; height: 160px; margin: 0px auto;"></div>
-    <br>
-    <br>
-    SIZE
-    <div id="size-container" style="width: 780px; height: 160px; margin: 0px auto;"></div>
-    <br>
-    <br>
-    <hr>
-    <br>
-    <img src ="SVGs/russia vs ukraine.svg" style="width: 580px; margin: 0px auto;">
-    <br>
-    <br>
-    <br>
-    <br>
-    GDP & PERCENT OF GDP SPENT ON MILITARY
-    <div id="ruUKGDP-container" style="width: 780px; height: 240px; margin: 0px auto;"></div>
-    <br>
-    <br>
-    POP
-    <div id="RuUKPop-container" style="width: 780px; height: 160px; margin: 0px auto;"></div>
-    <br>
-    <br>
-    SIZE
-    <div id="RuUKSize-container" style="width: 780px; height: 160px; margin: 0px auto;"></div>
-    <br>
-    <br>
-</section>
 
 
-    <!-- Import CanvasJS -->
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <!-- Map code is here -->
+    <script>
+
+        fetch('Countries.json')
+            .then(response => response.json())
+            .then(data => {
+                // Process the data to fit svgMap requirements
+                let mapValues = {};
+                data.forEach(country => {
+
+                    let allianceColor = '#000000'; // Default, no alliance
+
+                    if (country.Alliance === "NATO") {
+                        allianceColor = '#506AB2';
+                    } else if (country.Alliance === "CSTO") {
+                        allianceColor = '#E67368';
+                    }
+
+
+                    mapValues[country['Country Code']] = {
+                        gdp: country.GDP,
+                        population: country.Population,
+                        area: country.Area,
+                        milPercentGDP: country["Mil Percent GDP"],
+                        alliance: country.Alliance,
+                        color: allianceColor
+                    };
+                });
+
+                // Initialize the svgMap with the processed data
+                let map1 = new svgMap({
+                    targetElementID: 'svgMap',
+                    mouseWheelZoomEnabled: false,
+                    mouseWheelZoomWithKey: false,
+                    data: {
+                        data: {
+                            gdp: {
+                                name: 'GDP',
+                                format: '{0} USD (2021)',
+                                thousandSeparator: ',',
+                                thresholdMax: 50000,
+                                thresholdMin: 1000
+                            },
+                            population: {
+                                name: 'Population',
+                                format: '{0} People',
+                                thousandSeparator: ','
+                            },
+                            area: {
+                                name: 'Area',
+                                format: '{0} km²',
+                                thousandSeparator: ','
+                            },
+                            milPercentGDP: {
+                                name: '% of GDP to Mil',
+                                format: '{0} %',
+                                thousandSeparator: ','
+                            },
+                            alliance: {
+                                name: "Alliance",
+                                format: ''
+                            }
+                        },
+                        applyData: 'gdp',
+                        applyData: 'population',
+                        applyData: 'area',
+                        applyData: 'milPercentGDP',
+                        values: mapValues
+
+                    }
+                });
+
+                let map2 = new svgMap({
+                    targetElementID: 'svgMap2',
+                    mouseWheelZoomEnabled: false,
+                    mouseWheelZoomWithKey: false,
+                    initialZoom: 1.4,
+                    initialPan: { x: 1400, y: 60 },
+                    data: {
+                        data: {
+                            gdp: {
+                                name: 'GDP',
+                                format: '{0} USD (2021)',
+                                thousandSeparator: ',',
+                                thresholdMax: 50000,
+                                thresholdMin: 1000
+                            },
+                            population: {
+                                name: 'Population',
+                                format: '{0} People',
+                                thousandSeparator: ',',
+                                thresholdMax: 50000,
+                                thresholdMin: 1000
+                            }, 
+                            area:{
+                                name: 'Area',
+                                format: '{0} km²',
+                                thousandSeparator: ','
+                            },
+                            Mil_Percent_GDP: {
+                                name: '% of GDP to Mil',
+                                format: '{0} %',
+                                thousandSeparator: ',',
+                                thresholdMax: 50000,
+                                thresholdMin: 1000
+                            }
+                           
+                        },
+                        applyData: 'gdp',
+                        applyData: 'population',
+                        applyData: 'Mil_Percent_GDP',
+                        values: {
+                            RU: { gdp: 1779000000000, color: '#D62C20', population: "146400000",area:"17100000", Mil_Percent_GDP: "4.1" },
+                            UA: { gdp: 200100000000, color: '#DAA520', population: "43790000",area:"603628", Mil_Percent_GDP: "3.23%(2021)   33.55%(2022)" },
+                        }
+                    }
+                });
+
+
+            })
+            .catch(error => console.error('Error fetching the country data:', error));
+
+
+
+    </script>
+
+    <!-- Remaining HTML for Chart and Map Containers -->
+    <section
+        style="text-align: center; background-color: #E6DFDC; font-family: Assistant, sans-serif; font-weight: 400; color: #5B5B5B">
+        <div id="svgMap" style="height: 270px; overflow: hidden;"></div>
+        <hr>
+        <br>
+        <br>
+        GDP
+        <div id="GDP-container" style="width: 780px; height: 160px; margin: 0px auto;"></div>
+        POP
+        <div id="pop-container" style="width: 780px; height: 160px; margin: 0px auto;"></div>
+
+        SIZ
+        <div id="size-container" style="width: 780px; height: 160px; margin: 0px auto;"></div>
+        <hr>
+        <div id="svgMap2" style="height: 270px; overflow: hidden;"></div>
+        <br>
+        <br>
+        GDP & PERCENT OF GDP SPENT ON MILITARY
+        <div id="ruUKGDP-container" style="width: 780px; height: 240px; margin: 0px auto;"></div>
+
+        POP
+        <div id="RuUKPop-container" style="width: 780px; height: 160px; margin: 0px auto;"></div>
+
+        SIZE
+        <div id="RuUKSize-container" style="width: 780px; height: 160px; margin: 0px auto;"></div>
+
+    </section>
+
+
+
+
+
 
 </body>
 
