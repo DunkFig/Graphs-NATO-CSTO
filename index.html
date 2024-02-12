@@ -36,8 +36,10 @@
             let militaryRus = "#8c0c03"
             let militaryUK = "#CD853F"
 
+            //
+            var chartpxwidth = 780;
 
-            // CanvasJS Charts // Each chart has its own scale Max and units based on its size. Adjust these based on the 
+            // CanvasJS 
             var GDPscalemax = 63063;
             var GDPunit = GDPscalemax / chartpxwidth;
             var GDP = new CanvasJS.Chart("GDP-container",
@@ -245,6 +247,7 @@
                 });
             GDP.render();
 
+            console.log(GDP)
             var popScalemax = 1201
             var popUnit = popScalemax / chartpxwidth
             var Population = new CanvasJS.Chart("pop-container",
