@@ -51,11 +51,19 @@
 
             // Highlight functions
             function highlightCountry() {
+<<<<<<< HEAD
                 mapElement = document.getElementById(`svgMap${mapNum}-map-country-${activeCountryID}`);
                 mapElement.style.fill = "#FFFF00";
             }
             function unhighlightCountry() {
                 mapElement = document.getElementById(`svgMap${mapNum}-map-country-${activeCountryID}`);
+=======
+                mapElement = document.getElementById(`svgMap-map-country-${activeCountryID}`);
+                mapElement.style.fill = "#FFFF00";
+            }
+            function unhighlightCountry() {
+                mapElement = document.getElementById(`svgMap-map-country-${activeCountryID}`);
+>>>>>>> 6cbf582c6be93a35bcd157693a29c8d388580939
                 mapElement.style.fill = "";
             }
 
@@ -113,7 +121,10 @@
                         // Here is the data for the Stacked Bar, this contains all of the data points (This data is entered Manually, the data from the Map is entered in from the JSON file)
                         {
                             mouseover: function (e) {
+<<<<<<< HEAD
                                 mapNum = ''
+=======
+>>>>>>> 6cbf582c6be93a35bcd157693a29c8d388580939
                                 if (e.dataPoint.id) {
                                     updateActiveCountry(e.dataPoint.id);
                                     highlightCountry();
