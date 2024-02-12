@@ -28,21 +28,19 @@
             var wpRed100 = "#E67368";
             var wpRed50 = "#E6B4AE";
             var wpRed25 = "#E6CEC9";
+
+            // Interactive Specific Colors
             let russiaRed = "#d62c20";
             let USblue = "#1f409c"
             let ukraineGold = "#DAA520"
             let militaryRus = "#8c0c03"
             let militaryUK = "#CD853F"
 
-            var chartpxwidth = 780;
 
-           
-
-            // CanvasJS 
+            // CanvasJS Charts // Each chart has its own scale Max and units based on its size. Adjust these based on the 
             var GDPscalemax = 63063;
             var GDPunit = GDPscalemax / chartpxwidth;
             var GDP = new CanvasJS.Chart("GDP-container",
-
                 {
                     title: {
                         text: " ",
@@ -56,7 +54,6 @@
                     backgroundColor: wpTan,
                     animationEnabled: true,
                     dataPointWidth: 25,
-
                     // Hover tool tip
                     toolTip: {
                         backgroundColor: "#000000",
@@ -65,7 +62,7 @@
                         fontFamily: "'Assistant', sans-serif",
                         fontWeight: 400,
                         fontColor: "#FFFFFF",
-                        cornerRadius: 4,
+                        cornerRadius: 4
                     },
                     axisX: {
                         labelFontFamily: "'Assistant', sans-serif",
@@ -87,6 +84,7 @@
                         maximum: GDPscalemax,
                     },
                     data: [
+
                         {
                             type: "stackedBar",
                             indexLabelFontSize: 20,
@@ -94,25 +92,34 @@
                             yValueFormatString: "0.0 Billion Dollars",
                             indexLabelFontColor: wpDarkGrey,
                             indexLabelFontFamily: "Arial, sans-serif",
+                            mousemove: function (e) {
+                                let countryId = e.dataPoint.id
+                                let color = e.dataPoint.color
+                                updateActiveCountry(countryId, color)
+                            },
+                            mouseout: function (e) {
+                                let countryId = e.dataPoint.id
+                                let color = e.dataPoint.color
+                                unHighlightElement(countryId, color)
+                            },
                             dataPoints: [
 
-
-                                { x: 2, label: "Russia", y: 1862.470, color: russiaRed },
+                                { x: 2, label: "Russia", id: "RU", y: 1862.470, color: russiaRed },
                                 { x: 2, y: GDPunit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
-                                { x: 2, label: "Kazakhstan", y: 259.292, color: wpRed100 },
+                                { x: 2, label: "Kazakhstan", id: "KZ", y: 259.292, color: wpRed100 },
                                 { x: 2, y: GDPunit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
-                                { x: 2, label: "Belarus", y: 68.864, color: wpRed100 },
+                                { x: 2, label: "Belarus", id: "BY", y: 68.864, color: wpRed100 },
                                 { x: 2, y: GDPunit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
-                                { x: 2, label: "Armenia", y: 24.540, color: wpRed100 },
+                                { x: 2, label: "Armenia", id: "AM", y: 24.540, color: wpRed100 },
                                 { x: 2, y: GDPunit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
-                                { x: 2, label: "Kyrgyzstan", y: 12.681, color: wpRed100 },
+                                { x: 2, label: "Kyrgyzstan", id: "KG", y: 12.681, color: wpRed100 },
                                 { x: 2, y: GDPunit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
-                                { x: 2, label: "Tajikistan", y: 11.816, color: wpRed100 },
+                                { x: 2, label: "Tajikistan", id: "TJ", y: 11.816, color: wpRed100 },
                                 { x: 2, y: GDPunit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
 
@@ -127,7 +134,7 @@
 
 
 
-                                { x: 1, label: "US", y: 26949.643, color: USblue },
+                                { x: 1, label: "US", id: "US", y: 26949.643, color: USblue },
                                 { x: 1, y: GDPunit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
                                 { x: 1, label: "Germany", y: 4429.838, color: wpBlue100 },
@@ -228,15 +235,16 @@
                                     toolTipContent: null,
                                     highlightEnabled: false,
                                     indexLabelFontSize: 16,
-                                },
-
+                                }
                             ]
+
                         }
-                    ]
+
+                    ],
+
                 });
             GDP.render();
 
-            console.log(GDP)
             var popScalemax = 1201
             var popUnit = popScalemax / chartpxwidth
             var Population = new CanvasJS.Chart("pop-container",
@@ -947,6 +955,8 @@
                 });
             RuUKSPop.render();
         }
+
+
     </script>
 
 
@@ -968,8 +978,6 @@
                     } else if (country.Alliance === "CSTO") {
                         allianceColor = '#E67368';
                     }
-
-                    let tooltipVisible = country.GDP != null || country.Population != null || country.Area != null || country["Mil Percent GDP"] != null;
 
 
                     //Dynamically getting info from JSON
@@ -1029,12 +1037,10 @@
                         if (countryValues || (countryValues.population === undefined && countryValues.area === undefined && countryValues.milPercentGDP === undefined && countryValues.alliance === undefined)) {
                             // Return an empty string or a very minimal message to effectively disable the tooltip for this country
                             return ''; // You can also return a message like 'No data available'
-                        } 
+                        }
                     }
 
                 });
-
-
 
                 let map2 = new svgMap({
                     targetElementID: 'svgMap2',
@@ -1082,10 +1088,10 @@
                     },
                     onGetTooltip: (tooltipDiv, countryID, countryValues) => {
                         // Check if the country has the relevant data
-                        if (countryValues || ( countryValues.population === undefined && countryValues.area === undefined && countryValues.milPercentGDP === undefined && countryValues.alliance === undefined)) {
+                        if (countryValues || (countryValues.population === undefined && countryValues.area === undefined && countryValues.milPercentGDP === undefined && countryValues.alliance === undefined)) {
                             // Return an empty string or a very minimal message to effectively disable the tooltip for this country
                             return ''; // You can also return a message like 'No data available'
-                        } 
+                        }
                     }
                 });
 
