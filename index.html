@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
     <!-- Charts are Added in Script tage Below -->
     <script>
         window.onload = function () {
@@ -37,6 +36,7 @@
 
             var chartpxwidth = 780;
 
+           
 
             // CanvasJS 
             var GDPscalemax = 63063;
@@ -236,6 +236,7 @@
                 });
             GDP.render();
 
+            console.log(GDP)
             var popScalemax = 1201
             var popUnit = popScalemax / chartpxwidth
             var Population = new CanvasJS.Chart("pop-container",
@@ -968,7 +969,10 @@
                         allianceColor = '#E67368';
                     }
 
-                    //Dynamically getting infor from JSON
+                    let tooltipVisible = country.GDP != null || country.Population != null || country.Area != null || country["Mil Percent GDP"] != null;
+
+
+                    //Dynamically getting info from JSON
                     mapValues[country['Country Code']] = {
                         gdp: country.GDP,
                         population: country.Population,
@@ -1019,15 +1023,24 @@
                         applyData: 'area',
                         applyData: 'milPercentGDP',
                         values: mapValues
-
+                    },
+                    onGetTooltip: (tooltipDiv, countryID, countryValues) => {
+                        // Check if the country has the relevant data
+                        if (countryValues || (countryValues.population === undefined && countryValues.area === undefined && countryValues.milPercentGDP === undefined && countryValues.alliance === undefined)) {
+                            // Return an empty string or a very minimal message to effectively disable the tooltip for this country
+                            return ''; // You can also return a message like 'No data available'
+                        } 
                     }
+
                 });
+
+
 
                 let map2 = new svgMap({
                     targetElementID: 'svgMap2',
                     mouseWheelZoomEnabled: false,
                     mouseWheelZoomWithKey: false,
-                    initialZoom: 1.4,
+                    initialZoom: 1.0,
                     initialPan: { x: 1400, y: 60 },
                     data: {
                         data: {
@@ -1066,6 +1079,13 @@
                             RU: { gdp: 1779000000000, color: '#D62C20', population: "146400000", area: "17100000", Mil_Percent_GDP: "4.1" },
                             UA: { gdp: 200100000000, color: '#DAA520', population: "43790000", area: "603628", Mil_Percent_GDP: "3.23%(2021)   33.55%(2022)" },
                         }
+                    },
+                    onGetTooltip: (tooltipDiv, countryID, countryValues) => {
+                        // Check if the country has the relevant data
+                        if (countryValues || ( countryValues.population === undefined && countryValues.area === undefined && countryValues.milPercentGDP === undefined && countryValues.alliance === undefined)) {
+                            // Return an empty string or a very minimal message to effectively disable the tooltip for this country
+                            return ''; // You can also return a message like 'No data available'
+                        } 
                     }
                 });
 
@@ -1081,7 +1101,7 @@
     <!-- Remaining HTML for Chart and Map Containers -->
     <section
         style="text-align: center; background-color: #E6DFDC; font-family: Assistant, sans-serif; font-weight: 400; color: #5B5B5B">
-        <div id="svgMap" style="height: 270px; overflow: hidden;"></div>
+        <div id="svgMap" style="height: 370px; overflow: hidden;"></div>
         <hr>
         <br>
         <br>
