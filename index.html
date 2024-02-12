@@ -39,7 +39,9 @@
             //
             var chartpxwidth = 780;
 
-            // CanvasJS 
+            // CanvasJS //Below are the different charts each one has its own scale max and Unit size depending on the size of the sample.
+            //////////////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////
             var GDPscalemax = 63063;
             var GDPunit = GDPscalemax / chartpxwidth;
             var GDP = new CanvasJS.Chart("GDP-container",
@@ -56,6 +58,7 @@
                     backgroundColor: wpTan,
                     animationEnabled: true,
                     dataPointWidth: 25,
+
                     // Hover tool tip
                     toolTip: {
                         backgroundColor: "#000000",
@@ -86,7 +89,7 @@
                         maximum: GDPscalemax,
                     },
                     data: [
-
+                        // Here is the data for the Stacked Bar, this 
                         {
                             type: "stackedBar",
                             indexLabelFontSize: 20,
@@ -94,16 +97,6 @@
                             yValueFormatString: "0.0 Billion Dollars",
                             indexLabelFontColor: wpDarkGrey,
                             indexLabelFontFamily: "Arial, sans-serif",
-                            mousemove: function (e) {
-                                let countryId = e.dataPoint.id
-                                let color = e.dataPoint.color
-                                updateActiveCountry(countryId, color)
-                            },
-                            mouseout: function (e) {
-                                let countryId = e.dataPoint.id
-                                let color = e.dataPoint.color
-                                unHighlightElement(countryId, color)
-                            },
                             dataPoints: [
 
                                 { x: 2, label: "Russia", id: "RU", y: 1862.470, color: russiaRed },
@@ -132,8 +125,6 @@
                                     highlightEnabled: false,
                                     indexLabelFontSize: 16,
                                 },
-
-
 
 
                                 { x: 1, label: "US", id: "US", y: 26949.643, color: USblue },
