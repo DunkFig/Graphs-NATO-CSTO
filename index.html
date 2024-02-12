@@ -39,6 +39,25 @@
             //
             var chartpxwidth = 780;
 
+            // Highlight variables
+            var activeCountryID = "";
+
+            // Update active function
+            function updateActiveCountry(countryID) {
+                activeCountryID = countryID;
+            }
+
+            // Highlight functions
+            function highlightCountry() {
+                mapElement = document.getElementById(`svgMap-map-country-${activeCountryID}`);
+                mapElement.style.fill = "#FFFF00";
+            }
+            function unhighlightCountry() {
+                mapElement = document.getElementById(`svgMap-map-country-${activeCountryID}`);
+                mapElement.style.fill = "";
+            }
+
+
             // CanvasJS //Below are the different charts each one has its own scale max and Unit size depending on the size of the sample.
             //////////////////////////////////////////////////////////////
             /////////////////////////////////////////////////////////////
@@ -91,6 +110,25 @@
                     data: [
                         // Here is the data for the Stacked Bar, this 
                         {
+                            mouseover: function (e) {
+                                if (e.dataPoint.id) {
+                                    updateActiveCountry(e.dataPoint.id);
+                                    highlightCountry();
+                                }
+                            },
+                            mouseout: function (e) {
+                                unhighlightCountry();
+                            },
+                            mousemove: function (e) {
+                                if (e.dataPoint.id !== undefined) {
+
+                                    if (e.dataPoint.id !== activeCountryID) {
+                                        unhighlightCountry();
+                                        updateActiveCountry(e.dataPoint.id);
+                                        highlightCountry();
+                                    }
+                                }
+                            },
                             type: "stackedBar",
                             indexLabelFontSize: 20,
                             indexLabelPlacement: "outside",
@@ -130,7 +168,7 @@
                                 { x: 1, label: "US", id: "US", y: 26949.643, color: USblue },
                                 { x: 1, y: GDPunit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
-                                { x: 1, label: "Germany", y: 4429.838, color: wpBlue100 },
+                                { x: 1, label: "Germany", id: "DE", y: 4429.838, color: wpBlue100 },
                                 { x: 1, y: GDPunit, color: wpTan, toolTipContent: null, highlightEnabled: false, },
 
                                 { x: 1, label: "UK", y: 3332.059, color: wpBlue100 },
