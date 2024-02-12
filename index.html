@@ -89,7 +89,7 @@
                         maximum: GDPscalemax,
                     },
                     data: [
-                        // Here is the data for the Stacked Bar, this 
+                        // Here is the data for the Stacked Bar, this contains all of the data points (This data is entered Manually, the data from the Map is entered in from the JSON file)
                         {
                             type: "stackedBar",
                             indexLabelFontSize: 20,
@@ -238,7 +238,6 @@
                 });
             GDP.render();
 
-            console.log(GDP)
             var popScalemax = 1201
             var popUnit = popScalemax / chartpxwidth
             var Population = new CanvasJS.Chart("pop-container",
@@ -1027,9 +1026,12 @@
                         values: mapValues
                     },
                     onGetTooltip: (tooltipDiv, countryID, countryValues) => {
+
                         // Check if the country has the relevant data
                         if (countryValues || (countryValues.population === undefined && countryValues.area === undefined && countryValues.milPercentGDP === undefined && countryValues.alliance === undefined)) {
+
                             // Return an empty string or a very minimal message to effectively disable the tooltip for this country
+                            
                             return ''; // You can also return a message like 'No data available'
                         }
                     }
